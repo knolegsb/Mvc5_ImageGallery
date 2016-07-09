@@ -1,0 +1,63 @@
+﻿@model List<Mvc5_ImageGallery.ImageGallery>
+
+@{
+    ViewBag.Title = "Gallery";
+}
+
+<h2>Gallery</h2>
+
+<p>
+    @Html.ActionLink("Upload New", "Upload")
+</p>
+<table class="table">
+
+    @{
+        int j = 0;
+        for (int i = 0; i < Model.Count(); i += 4)
+        {
+            j = 1;
+            <tr>
+                @while (j < i + 4 && j < Model.Count())
+                {
+                    <td>
+                        <img src="data:image/png;base64, @Convert.ToBase64String(Model[j].ImageData, 0, Model[j].ImageData.Length)" width="100"/>
+                    </td>
+                    j++;
+                }
+            </tr>
+        }
+    }
+
+    @*<tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ImageID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ImageSize)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FileName)
+                </th>
+                <th></th>
+            </tr>
+
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImageID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImageSize)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FileName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }*@
+
+</table>
