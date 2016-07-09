@@ -1,0 +1,48 @@
+﻿@model List<Mvc5_ImageGallery.Models.ImageGalleryViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            <b>Image ID</b>
+        </th>
+        <th>
+            <b>Image Size</b>
+        </th>
+        <th>
+            <b>File Name</b>
+        </th>
+        <th>
+            <b>Image</b>
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImageID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImageSize)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FileName)
+        </td>
+        <td>
+            <img src="/ImageGallery/RetrieveImage/@item.ImageID" alt="" height="100" width="200" /> 
+            @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+        </td>
+    </tr>
+}
+
+</table>
