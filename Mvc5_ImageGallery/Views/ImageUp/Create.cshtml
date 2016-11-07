@@ -30,14 +30,17 @@
                 @Html.ValidationMessageFor(model => model.ImagePath, "", new { @class = "text-danger" })
             </div>
         </div>*@
-        <fieldset>
+        <fieldset class="form-group">
             <div class="editor-label">
-                @Html.LabelFor(model => model.ImagePath)
+                @Html.LabelFor(model => model.ImagePath, new { @class = "control-label col-md-2" })
             </div>
-            <div class="editor-field">
-                <input id="ImagePath" title="Upload a Product Image" type="file" name="file" />
+            <div class="editor-field col-md-10">
+                <input id="ImagePath" title="Upload a Product Image" type="file" name="file" class="btn btn-default" onchange="show(this)" />
             </div>
         </fieldset>
+        <div>
+            <img id="user_img" height="240" width="180" style="border:solid;" />
+        </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />
@@ -49,3 +52,16 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")    
+    <script>
+        function show(data) {
+            var filedr = new FileReader();
+            filedr.onload = function (e) {
+                $("#user_img").attr('src', e.target.result);
+            }
+            filedr.readAsDataURL(data.files[0]);
+        }
+    </script>
+}

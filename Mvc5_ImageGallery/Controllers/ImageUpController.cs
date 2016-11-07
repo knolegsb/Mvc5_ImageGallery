@@ -60,6 +60,7 @@ namespace Mvc5_ImageGallery.Controllers
                     file.SaveAs(HttpContext.Server.MapPath("~/Images/") + file.FileName);
                     image.ImagePath = file.FileName;
                 }
+                image.ID = Guid.NewGuid();
                 db.Images.Add(image);
                 db.SaveChanges();
                 return RedirectToAction("Index");
