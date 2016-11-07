@@ -12,16 +12,20 @@ namespace Mvc5_ImageGallery
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.Web;
 
-    public partial class ImageGallery
+    public partial class Image
     {
-        public int ImageID { get; set; }
-        public int ImageSize { get; set; }
-        public string FileName { get; set; }
-        public byte[] ImageData { get; set; }
+        public Image()
+        {
+            ImageList = new List<string>();
+        }
 
-        [Required(ErrorMessage = "Please select image file")]
-        public HttpPostedFileBase File { get; set; }
+        public System.Guid ID { get; set; }
+
+        public string Name { get; set; }
+
+        public string ImagePath { get; set; }
+
+        public List<string> ImageList { get; set; }
     }
 }

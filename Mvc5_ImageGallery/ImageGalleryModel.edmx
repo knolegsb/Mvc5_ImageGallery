@@ -15,6 +15,14 @@
           <Property Name="Contents" Type="nvarchar(max)" />
           <Property Name="Image" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="ImagePath" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="ImageGallery">
           <Key>
             <PropertyRef Name="ImageID" />
@@ -26,6 +34,7 @@
         </EntityType>
         <EntityContainer Name="ImageGalleryDatabaseModelStoreContainer">
           <EntitySet Name="Contents" EntityType="Self.Contents" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Image" EntityType="Self.Image" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ImageGallery" EntityType="Self.ImageGallery" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -44,6 +53,7 @@
         <EntityContainer Name="ImageGalleryContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ImageGalleries" EntityType="Self.ImageGallery" />
           <EntitySet Name="Contents" EntityType="ImageGalleryDatabaseModel.Content" />
+          <EntitySet Name="Images" EntityType="ImageGalleryDatabaseModel.Image" />
         </EntityContainer>
         <EntityType Name="Content">
           <Key>
@@ -54,6 +64,14 @@
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -78,6 +96,15 @@
                 <ScalarProperty Name="Contents" ColumnName="Contents" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="ImageGalleryDatabaseModel.Image">
+              <MappingFragment StoreEntitySet="Image">
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

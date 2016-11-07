@@ -27,5 +27,6 @@ namespace Mvc5_ImageGallery
     
         public virtual DbSet<ImageGallery> ImageGalleries { get; set; }
         public virtual DbSet<Content> Contents { get; set; }
+        public virtual DbSet<Image> Images { get; set; }
     }
 }

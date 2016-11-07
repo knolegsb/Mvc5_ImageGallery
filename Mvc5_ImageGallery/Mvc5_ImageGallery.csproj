@@ -175,10 +175,16 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\ImageGalleryController.cs" />
+    <Compile Include="Controllers\ImageUpController.cs" />
+    <Compile Include="Controllers\ImageUploadController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Image.cs">
+      <DependentUpon>ImageGalleryModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ImageGallery.cs">
       <DependentUpon>ImageGalleryModel.tt</DependentUpon>
@@ -288,6 +294,13 @@
     <Content Include="Views\Content\Index.cshtml" />
     <Content Include="Views\Content\Create.cshtml" />
     <Content Include="Views\ImageGallery\Index.cshtml" />
+    <Content Include="Views\Image\Index.cshtml" />
+    <Content Include="Views\ImageUpload\Index.cshtml" />
+    <Content Include="Views\ImageUp\Create.cshtml" />
+    <Content Include="Views\ImageUp\Delete.cshtml" />
+    <Content Include="Views\ImageUp\Details.cshtml" />
+    <Content Include="Views\ImageUp\Edit.cshtml" />
+    <Content Include="Views\ImageUp\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -300,7 +313,10 @@
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Images\" />
+    <Folder Include="Upload_Images\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

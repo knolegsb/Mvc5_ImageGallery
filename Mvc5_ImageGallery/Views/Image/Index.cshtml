@@ -1,0 +1,27 @@
+﻿@model Mvc5_ImageGallery.Image
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@if (Model.ImageList.Count > 0)
+{
+    <div class="row-fluid">
+        <div class="span2">
+            <div class="item">
+                @foreach (var image in Model.ImageList)
+                {
+                    <div style="margin: 10px; float:left; height: 200px; overflow: hidden; width: 200px;">
+                        <a id="ShowImage" class="fancybox-button" data-rel="fancybox-button" title="Photo" href="@Url.Content("~/Upload_Images/" + image)" >
+                            <div class="zoom">
+                                <img src="@Url.Content("~/Upload_Images/" + image)" class="imgBox" />
+                                <div class="zoom-icon"></div>
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}
